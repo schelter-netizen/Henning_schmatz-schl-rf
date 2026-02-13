@@ -24,21 +24,22 @@
             background-color: #FDF2B3;
         }
 
+        /* Star Sparkle Animations */
         @keyframes sparkle-1 {
             0%, 100% { transform: translate(0, 0) scale(0); opacity: 0; }
-            50% { transform: translate(-15px, -15px) scale(1.2); opacity: 1; }
+            50% { transform: translate(-30px, -25px) scale(1.5); opacity: 1; }
         }
         @keyframes sparkle-2 {
             0%, 100% { transform: translate(0, 0) scale(0); opacity: 0; }
-            50% { transform: translate(18px, -12px) scale(1); opacity: 0.8; }
+            50% { transform: translate(35px, -20px) scale(1.2); opacity: 0.8; }
         }
         @keyframes sparkle-3 {
             0%, 100% { transform: translate(0, 0) scale(0); opacity: 0; }
-            50% { transform: translate(12px, 15px) scale(1.1); opacity: 0.9; }
+            50% { transform: translate(25px, 20px) scale(1.4); opacity: 0.9; }
         }
         @keyframes sparkle-4 {
             0%, 100% { transform: translate(0, 0) scale(0); opacity: 0; }
-            50% { transform: translate(-18px, 10px) scale(0.9); opacity: 0.7; }
+            50% { transform: translate(-35px, 15px) scale(1.1); opacity: 0.7; }
         }
 
         .star-anim-1 { animation: sparkle-1 2s ease-in-out infinite; }
@@ -59,5 +60,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- Explicitly loading index.tsx to fix blank page on Vercel -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
