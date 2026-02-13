@@ -1,0 +1,5 @@
+{
+  "name": "Schmatz & Schlürf Recipe Finder",
+  "description": "A elegant recipe discovery app that finds the perfect meal from the Schmatz & Schlürf YouTube channel based on ingredients you already have in your kitchen.",
+  "requestFramePermissions": []
+}
