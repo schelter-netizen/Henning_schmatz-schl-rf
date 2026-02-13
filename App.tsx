@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import IngredientInput from './components/IngredientInput';
-import RecipeCard from './components/RecipeCard';
-import { getRecipeRecommendations, getLatestVideos } from './services/geminiService';
-import { Recipe, AppState } from './types';
+import Header from './components/Header.tsx';
+import IngredientInput from './components/IngredientInput.tsx';
+import RecipeCard from './components/RecipeCard.tsx';
+import { getRecipeRecommendations, getLatestVideos } from './services/geminiService.ts';
+import { Recipe, AppState } from './types.ts';
 
 const App: React.FC = () => {
   const [state, setState] = useState<AppState>(AppState.IDLE);
@@ -86,13 +86,13 @@ const App: React.FC = () => {
             <div className="mb-16 text-center max-w-3xl mx-auto">
               <h2 className="text-4xl font-bold text-stone-800 mb-8 italic">Vorratskammer-Perlen</h2>
               <div className="p-10 bg-white/70 backdrop-blur-xl rounded-[3rem] border border-[#FDF2B3] shadow-inner relative">
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FDF2B3] pl-2 pr-5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest text-[#8B7E3D] flex items-center gap-2 shadow-sm border border-[#EBE1A4]">
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FDF2B3] pl-2 pr-5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest text-[#8B7E3D] flex items-center gap-2 shadow-md border border-[#EBE1A4]">
                   <img 
                     src="https://moma-teams-photos.corp.google.com/photos/hschulte?sz=212&type=CUSTOM&type=SILHOUETTE" 
                     alt="Henning"
-                    className="w-8 h-8 rounded-full border border-white bg-white/50 object-cover"
+                    className="w-8 h-8 rounded-full border border-white bg-white/50 object-cover shadow-sm"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
+                      (e.target as HTMLImageElement).src = "https://ui-avatars.com/api/?name=Henning&background=FDF2B3&color=8B7E3D";
                     }}
                   />
                   Henning’s Tipp
@@ -141,7 +141,6 @@ const App: React.FC = () => {
                       }}
                      />
                      
-                     {/* Play Button Overlay */}
                      <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-white transition-all duration-500">
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 text-stone-800">
@@ -179,17 +178,16 @@ const App: React.FC = () => {
             href="https://www.linkedin.com/in/mira-von-justvanilla-8a3917307/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center px-1"
+            className="made-by-mira-link relative inline-flex items-center px-2 py-1 group"
           >
-            {/* Animated Stars container - hidden by default, visible only on group-hover */}
-            <div className="absolute inset-0 pointer-events-none overflow-visible flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-               <span className="absolute star-anim-1 text-[8px]">✨</span>
-               <span className="absolute star-anim-2 text-[10px]">✨</span>
-               <span className="absolute star-anim-3 text-[7px]">✨</span>
-               <span className="absolute star-anim-4 text-[9px]">✨</span>
+            <div className="star-container absolute inset-0 pointer-events-none overflow-visible flex items-center justify-center">
+               <span className="star-anim-1 text-[8px]">✨</span>
+               <span className="star-anim-2 text-[10px]">✨</span>
+               <span className="star-anim-3 text-[7px]">✨</span>
+               <span className="star-anim-4 text-[9px]">✨</span>
             </div>
             
-            <span className="relative z-10 group-hover:text-amber-600 transition-colors">made by Mira</span>
+            <span className="relative z-10 group-hover:text-amber-600 transition-colors duration-300">made by Mira</span>
           </a>
           • 2026
         </p>

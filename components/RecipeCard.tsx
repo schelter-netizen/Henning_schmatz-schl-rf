@@ -1,13 +1,12 @@
 
 import React from 'react';
-import { Recipe } from '../types';
+import { Recipe } from '../types.ts';
 
 interface Props {
   recipe: Recipe;
 }
 
 const RecipeCard: React.FC<Props> = ({ recipe }) => {
-  // Use high-quality YouTube thumbnail
   const thumbnailUrl = recipe.videoId 
     ? `https://i.ytimg.com/vi/${recipe.videoId}/maxresdefault.jpg`
     : `https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600`;
@@ -21,13 +20,11 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => {
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           onError={(e) => {
-            // Fallback to hqdefault if maxres doesn't exist
             (e.target as HTMLImageElement).src = `https://i.ytimg.com/vi/${recipe.videoId}/hqdefault.jpg`;
           }}
         />
         <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-500" />
         
-        {/* Persistent & Hover Play Button */}
         <div className="absolute inset-0 flex items-center justify-center">
            <div className="w-14 h-14 rounded-full bg-white/40 backdrop-blur-md border border-white/60 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-white/90 transition-all duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="ml-1 text-stone-800 group-hover:text-amber-500 transition-colors">

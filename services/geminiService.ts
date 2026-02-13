@@ -1,7 +1,7 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { RecommendationResponse, Recipe } from "../types";
-import { RECIPE_DB, RecipeData } from "../data/recipes";
+import { RecommendationResponse, Recipe } from "../types.ts";
+import { RECIPE_DB, RecipeData } from "../data/recipes.ts";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
@@ -38,7 +38,6 @@ const parseJsonFromMarkdown = (text: string) => {
 };
 
 export const getLatestVideos = async (): Promise<Recipe[]> => {
-  // We use the top 4 from our curated local database for guaranteed functionality
   return RECIPE_DB.slice(0, 4).map(r => ({
     id: r.videoId,
     title: r.title,
@@ -50,7 +49,6 @@ export const getLatestVideos = async (): Promise<Recipe[]> => {
 };
 
 export const getRecipeRecommendations = async (ingredients: string[]): Promise<RecommendationResponse> => {
-  // Create a simplified list of our available recipes for the model to choose from
   const availableRecipes = RECIPE_DB.map((r, index) => ({
     id: index,
     title: r.title,
@@ -102,7 +100,6 @@ export const getRecipeRecommendations = async (ingredients: string[]): Promise<R
     };
   } catch (error) {
     console.error("Fehler in getRecipeRecommendations:", error);
-    // Fallback if AI fails: just return the first 3
     return {
       recipes: RECIPE_DB.slice(0, 3).map(r => ({
         id: r.videoId,
